@@ -13,10 +13,14 @@ if __name__ == "__main__":
     PROBLEMS_DIR = pathlib.Path(__file__).parent / "problems"
     TOTAL_PROBLEMS_FILES = len(tuple(PROBLEMS_DIR.iterdir()))
     PROBLEMS_FILE_MODE   = int(oct(tuple(PROBLEMS_DIR.iterdir())[0].stat().st_mode)[-3:], base=8)
-    
-    (PROBLEMS_DIR / f"problem-{TOTAL_PROBLEMS_FILES + 1}.md").touch(mode=PROBLEMS_FILE_MODE, exist_ok=True)
+
+    NEW_FILE = (PROBLEMS_DIR / f"problem-{TOTAL_PROBLEMS_FILES + 1}.md")
+    NEW_FILE.touch(mode=PROBLEMS_FILE_MODE, exist_ok=True)
+    print(f"created {NEW_FILE}")
 
     SOLUTIONS_DIR = pathlib.Path(__file__).parent / "solutions"
     SOLUTIONS_FILE_MODE = int(oct(tuple(SOLUTIONS_DIR.iterdir())[0].stat().st_mode)[-3:], base=8)
-    
-    (SOLUTIONS_DIR / f"problem-{TOTAL_PROBLEMS_FILES + 1}.{language_extension}").touch(mode=PROBLEMS_FILE_MODE, exist_ok=True)
+
+    NEW_FILE = (SOLUTIONS_DIR / f"problem-{TOTAL_PROBLEMS_FILES + 1}.{language_extension}")
+    NEW_FILE.touch(mode=PROBLEMS_FILE_MODE, exist_ok=True)
+    print(f"created {NEW_FILE}")
